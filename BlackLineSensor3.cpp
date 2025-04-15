@@ -31,3 +31,20 @@ bool BlackLineSensor3::compareLineValues(bool s0, bool s1, bool s2, bool s3, boo
       sensors[i] = readLineSensorBool(i);
     }
   }
+
+  uint8_t BlackLineSensor3::readLineSensor(uint8_t channel) {
+    if (channel >= 0 && channel <= 7) {
+      digitalWrite(S0, (channel & B00000001) ? HIGH : LOW);
+      digitalWrite(S1, (channel & B00000010) ? HIGH : LOW);
+      digitalWrite(S2, (channel & B00000100) ? HIGH : LOW);
+      return analogRead(A0);
+    }
+    return 0;
+  }
+  
+  bool BlackLineSensor3::readLineSensorBool(uint8_t channel) {
+    if (channel >= 0 && channel <= 7) {
+      return readLineSensor(channel) > level;
+    }
+    return false;
+  }
