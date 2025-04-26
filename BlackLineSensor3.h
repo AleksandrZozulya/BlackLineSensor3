@@ -9,7 +9,8 @@ public:
     void begin(int level);
     uint8_t readLineSensor(uint8_t channel);
     bool readLineSensorBool(uint8_t channel);
-    bool compareLineValues(bool s0, bool s1, bool s2, bool s3, bool s4, bool s5, bool s6, bool s7);
+    bool compareLine8Values(bool s0, bool s1, bool s2, bool s3, bool s4, bool s5, bool s6, bool s7);
+    bool compareLine6Values(bool s0, bool s1, bool s2, bool s3, bool s4, bool s5);
     void updateSensors();
     
 private:
